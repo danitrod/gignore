@@ -6,7 +6,7 @@ The gitignore templates are extracted in real time from https://github.com/githu
 
 ## Installation
 
-To install this tool, you will need to have [Cargo, the rust package manager](https://doc.rust-lang.org/cargo/getting-started/installation.html) installed. Once you have it, you can simply run `cargo install gitignore`.
+To install this tool, you will need to have [Cargo, the Rust package manager](https://doc.rust-lang.org/cargo/getting-started/installation.html) installed. Once you have it, you can simply run `cargo install gitignore`.
 
 ## Getting started
 
