@@ -1,6 +1,6 @@
 # gignore
 
-![](https://img.shields.io/crates/v/gignore?style=flat-square)
+[![crates.io](https://img.shields.io/crates/v/gignore?style=flat-square)](https://crates.io/crates/gignore)
 
 gignore is a command line tool to help you easily create `.gitignore` files for your projects, so you can stop uploading dependencies and irrelevant files to your remotes.
 
