@@ -1,5 +1,7 @@
 # gignore
 
+![](https://img.shields.io/crates/v/gignore?style=flat-square)
+
 gignore is a command line tool to help you easily create `.gitignore` files for your projects, so you can stop uploading dependencies and irrelevant files to your remotes.
 
 The gitignore templates are extracted in real time from https://github.com/github/gitignore, a collection of useful gitignore templates maintained by GitHub.
