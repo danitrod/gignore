@@ -8,9 +8,8 @@ pub mod list;
 
 #[derive(Clap)]
 pub enum SubCommand {
-    #[clap(version = config::VERSION, author = config::AUTHOR_EMAIL, visible_alias = "show")]
-    Cat(cat::Cat),
-
+    // #[clap(version = config::VERSION, author = config::AUTHOR_EMAIL, visible_alias = "show")]
+    // Cat(cat::Cat),
     #[clap(version = config::VERSION, author = config::AUTHOR_EMAIL,  visible_alias = "new")]
     Create(create::Create),
 

@@ -1,7 +1,14 @@
 [package]
 name = "gitignore"
 version = "0.1.0"
-authors = ["danitrod <danitrod@outlook.com>"]
+authors = ["Daniel T. Rodrigues <danitrod@outlook.com>"]
+license = "MIT"
+description = "A command line tool to generate gitignore template files"
+readme = "README.md"
+homepage = "https://github.com/danitrod/gitignore/"
+repository = "https://github.com/danitrod/gitignore/"
+keywords = ["cli", "gitignore", "git"]
+categories = ["command-line-utilities"]
 edition = "2018"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html

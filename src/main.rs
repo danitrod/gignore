@@ -21,6 +21,6 @@ async fn main() {
     match opts.subcmd {
         SubCommand::List(list) => list.exec().await,
         SubCommand::Create(create) => create.exec().await,
-        SubCommand::Cat(cat) => cat.exec().await,
+        // SubCommand::Cat(cat) => cat.exec().await,
     };
 }
