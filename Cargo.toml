@@ -1,12 +1,12 @@
 [package]
-name = "gitignore"
+name = "gignore"
 version = "0.1.0"
 authors = ["Daniel T. Rodrigues <danitrod@outlook.com>"]
 license = "MIT"
 description = "A command line tool to generate gitignore template files"
 readme = "README.md"
-homepage = "https://github.com/danitrod/gitignore/"
-repository = "https://github.com/danitrod/gitignore/"
+homepage = "https://github.com/danitrod/gignore/"
+repository = "https://github.com/danitrod/gignore/"
 keywords = ["cli", "gitignore", "git"]
 categories = ["command-line-utilities"]
 edition = "2018"
