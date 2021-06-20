@@ -1,7 +1,9 @@
 use clap::{AppSettings, Clap};
 
 mod config;
+mod services;
 mod subcommands;
+mod utils;
 
 use subcommands::{Executable, SubCommand};
 #[derive(Clap)]
@@ -13,11 +15,12 @@ struct Opts {
     subcmd: SubCommand,
 }
 
-fn main() {
+#[async_std::main]
+async fn main() {
     let opts: Opts = Opts::parse();
     match opts.subcmd {
-        SubCommand::List(list) => list.exec(),
-        SubCommand::Create(create) => create.exec(),
-        SubCommand::Cat(cat) => cat.exec(),
-    }
+        SubCommand::List(list) => list.exec().await,
+        SubCommand::Create(create) => create.exec().await,
+        SubCommand::Cat(cat) => cat.exec().await,
+    };
 }
