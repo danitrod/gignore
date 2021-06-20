@@ -1,57 +1,84 @@
-use std::fs;
-
+use super::Executable;
 use crate::{
     services::github::GithubService,
     utils::{get_language_aliases, print_colored},
 };
-use termcolor::Color;
-
-use super::Executable;
 use async_trait::async_trait;
 use clap::Clap;
+use std::{fs, path};
+use termcolor::Color;
 
 pub const DESCRIPTION: &str = "Create an up to date gitignore for a given language or technology";
 
 #[derive(Clap)]
 #[clap(about = DESCRIPTION)]
 pub struct Create {
+    #[clap(about = "Language or technology for the gitignore template")]
     language: String,
+    #[clap(
+        short,
+        long,
+        about = "A name for the file to be created",
+        default_value = ".gitignore"
+    )]
+    name: String,
+    #[clap(
+        short,
+        long,
+        about = "Path where to create the file",
+        default_value = "."
+    )]
+    path: String,
 }
 
 #[async_trait]
 impl Executable for Create {
     async fn exec(self) -> () {
-        let github_service = GithubService::new();
-
-        // The raw github page is case-sensitive
-        // To match uncased args, we need to check what is the cased name
-        let aliases = get_language_aliases();
-        let mut actual_lang = self.language.to_lowercase();
-        if let Some(lang) = aliases.get(&actual_lang) {
-            actual_lang = lang.clone();
+        // Validate inputs
+        let path = path::Path::new(&self.path);
+        if !path.is_dir() {
+            print_colored(format!("Error: Path {} not found", self.path), Color::Red);
+            std::process::exit(3);
         }
 
+        let github_service = GithubService::new();
+
+        // Resolve any aliases for languages
+        let aliases = get_language_aliases();
+        let mut lowercased_lang = self.language.to_lowercase();
+        if let Some(lang) = aliases.get(&lowercased_lang) {
+            lowercased_lang = lang.clone();
+        }
+
+        // Github page is case-sensitive
+        // Get the cased name from the available list
         let list = github_service.list_languages().await;
         let mut cased_language = None;
         for lang in list {
-            if lang.to_lowercase() == actual_lang {
+            if lang.to_lowercase() == lowercased_lang {
                 cased_language = Some(lang);
             }
         }
 
         match cased_language {
             None => print_colored(
-                "Not found: this language or technology has no available gitignore template."
+                format!("Not found: the language or technology {} currently has no available gitignore template.", self.language)
                     .into(),
-                Color::Red,
+                Color::Yellow,
             ),
             Some(lang) => {
                 let contents = github_service.get_gitignore(lang.clone()).await;
-                fs::write(".gitignore", contents).unwrap();
-                print_colored(
-                    format!(".gitignore file for {} successfully created", lang),
-                    Color::Green,
-                );
+                let path = path.join(self.name);
+
+                match fs::write(path.clone(), contents) {
+                    Ok(_) => print_colored(
+                        format!(".gitignore file for {} successfully created at {}", lang, path.to_str().unwrap()),
+                        Color::Green,
+                    ),
+                    Err(err) => {
+                        print_colored(format!("Error: {}", err), Color::Red);
+                    }
+                };
             }
         }
     }
