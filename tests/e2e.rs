@@ -25,7 +25,7 @@ fn create_file() {
     let output = Command::cargo_bin(env!("CARGO_PKG_NAME"))
         .unwrap()
         .arg("new")
-        .arg("ts")
+        .arg("ts") // Create for TypeScript (alias to Node)
         .arg("-n")
         .arg(test_file_name)
         .unwrap();
