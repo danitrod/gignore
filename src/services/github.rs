@@ -26,8 +26,8 @@ impl GithubService {
         for element in document.select(&selector) {
             let file_name = element.text().collect::<Vec<_>>()[0];
 
-            if file_name.ends_with(".gitignore") {
-                file_names.push(file_name[..file_name.len() - 10].into());
+            if let Some(stripped) = file_name.strip_suffix(".gitignore") {
+                file_names.push(stripped.into());
             }
         }
 

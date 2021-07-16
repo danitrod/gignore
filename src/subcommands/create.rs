@@ -62,8 +62,7 @@ impl Executable for Create {
 
         match cased_language {
             None => print_colored(
-                format!("Not found: the language or technology {} currently has no available gitignore template.", self.language)
-                    .into(),
+                format!("Not found: the language or technology {} currently has no available gitignore template.", self.language),
                 Color::Yellow,
             ),
             Some(lang) => {
