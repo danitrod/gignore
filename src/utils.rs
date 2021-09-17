@@ -34,5 +34,8 @@ pub fn get_language_aliases() -> HashMap<String, String> {
     language_aliases.insert("c#".into(), "visualstudio".into());
     language_aliases.insert("asp.net".into(), "visualstudio".into());
 
+    // C++
+    language_aliases.insert("cpp".into(), "c++".into());
+
     language_aliases
 }
