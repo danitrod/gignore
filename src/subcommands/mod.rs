@@ -1,12 +1,12 @@
 use super::config;
 use async_trait::async_trait;
-use clap::Clap;
+use clap::Parser;
 
 pub mod cat;
 pub mod create;
 pub mod list;
 
-#[derive(Clap)]
+#[derive(Parser)]
 pub enum SubCommand {
     // #[clap(version = config::VERSION, author = config::AUTHOR_EMAIL, visible_alias = "show")]
     // Cat(cat::Cat),

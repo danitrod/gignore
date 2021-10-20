@@ -31,13 +31,13 @@ jobs:
             ~/.cargo/registry
             ~/.cargo/git
             ./target/debug
-          key: ${{ matrix.target.os }}-${{ hashFiles('**/Cargo.lock') }}
+          key: ${{ matrix.target.os }}-${{ hashFiles('Cargo.lock') }}
 
       # Install Rust
       - name: install rust toolchain
         uses: actions-rs/toolchain@v1
         with:
-          toolchain: stable
+          toolchain: 1.54.0
           override: true
           target: ${{ matrix.target.triple }}
 

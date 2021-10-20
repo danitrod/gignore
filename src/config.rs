@@ -1,5 +1,5 @@
 pub const AUTHOR_EMAIL: &str = "Daniel T. Rodrigues <danitrod@outlook.com>";
-pub const VERSION: &str = "0.2";
+pub const VERSION: &str = "0.2.2";
 pub const ABOUT: &str = "gignore: Command line tool to generate an up-to-date gitignore template for your favorite languages and technologies. Templates are taken from https://github.com/github/gignore";
 
 // GitHub scraping

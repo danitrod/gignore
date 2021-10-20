@@ -1,11 +1,11 @@
 use super::Executable;
 use async_trait::async_trait;
-use clap::Clap;
+use clap::Parser;
 
 pub const DESCRIPTION: &str =
     "Check out the contents of the gitignore template for given language or technology";
 
-#[derive(Clap)]
+#[derive(Parser)]
 #[clap(about = DESCRIPTION)]
 pub struct Cat {
     language: String,

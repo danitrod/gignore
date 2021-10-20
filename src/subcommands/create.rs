@@ -4,13 +4,13 @@ use crate::{
     utils::{get_language_aliases, print_colored},
 };
 use async_trait::async_trait;
-use clap::Clap;
+use clap::Parser;
 use std::{fs, path};
 use termcolor::Color;
 
 pub const DESCRIPTION: &str = "Create an up to date gitignore for a given language or technology";
 
-#[derive(Clap)]
+#[derive(Parser)]
 #[clap(about = DESCRIPTION)]
 pub struct Create {
     #[clap(about = "Language or technology for the gitignore template")]

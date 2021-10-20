@@ -1,4 +1,4 @@
-use clap::{AppSettings, Clap};
+use clap::Parser;
 
 mod config;
 mod services;
@@ -6,10 +6,8 @@ mod subcommands;
 mod utils;
 
 use subcommands::{Executable, SubCommand};
-#[derive(Clap)]
-#[clap(version = config::VERSION, author = config::AUTHOR_EMAIL)]
-#[clap(setting = AppSettings::ColoredHelp, about = config::ABOUT)]
-
+#[derive(Parser)]
+#[clap(version = config::VERSION, author = config::AUTHOR_EMAIL, about = config::ABOUT)]
 struct Opts {
     #[clap(subcommand)]
     subcmd: SubCommand,

@@ -1,12 +1,12 @@
 use crate::{services::github::GithubService, utils::print_colored, Executable};
 use async_trait::async_trait;
-use clap::Clap;
+use clap::Parser;
 use termcolor::Color;
 
 pub const DESCRIPTION: &str =
     "List the available languages and technologies for gitignore templates";
 
-#[derive(Clap)]
+#[derive(Parser)]
 #[clap(about = DESCRIPTION)]
 pub struct List {}
 
