@@ -1,6 +1,6 @@
 [package]
 name = "gignore"
-version = "0.2.0"
+version = "0.2.1"
 authors = ["Daniel T. Rodrigues <danitrod@outlook.com>"]
 license = "MIT"
 description = "A command line tool to generate gitignore template files"
