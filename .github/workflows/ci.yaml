@@ -15,8 +15,7 @@ jobs:
           - { name: Windows, os: windows-latest, triple: x86_64-pc-windows-msvc }
 
     name: ${{ matrix.target.name }}
-
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.target.os }}
 
     steps:
       # Checkout repo
